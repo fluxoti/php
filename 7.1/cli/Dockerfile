@@ -51,4 +51,4 @@ rm -rf /build
 
 WORKDIR /var/www/html
 
-ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

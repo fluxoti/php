@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Tweaking php.ini with the environment variables
 sed -i "s/error_reporting = .*/error_reporting = $PHP_ERROR_REPORTING/" /usr/local/etc/php/php.ini
@@ -37,4 +37,12 @@ then
 fi
 
 /usr/sbin/crond
-supervisord --nodaemon --configuration /etc/supervisord.conf
+supervisord --configuration /etc/supervisord.conf
+
+if [[ -z "$@" ]]
+then
+    tail -f /tmp/supervisord.log
+else
+    exec "$@"
+fi
+
