@@ -1,0 +1,11 @@
+*:8080 {
+  tls off
+  root /var/www/html/public
+  log stdout
+  errors stderr
+  fastcgi / /var/run/php-fpm.sock php
+  rewrite {
+    to {path} {path}/ /index.php?{query}
+  }
+  gzip
+}
